@@ -7,9 +7,9 @@ import os
 
 app = FastAPI()
 
-@app.on_event("startup")
-async def startup_event():
-    configure_gemini()
+#@app.on_event("startup")
+#async def startup_event():
+#    configure_gemini()
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")
@@ -24,7 +24,7 @@ async def read_root(request: Request):
 async def ask_question(request: Request, question: str = Form(...), model: str = Form(...)):
     try:
         response, _ = get_response(question, model)
-        df_preview = obtener_datos().head(5).to_html(classes="df-preview", index=False)
+        #df_preview = obtener_datos().head(5).to_html(classes="df-preview", index=False)
         return templates.TemplateResponse(
             "index.html",
             {
@@ -32,11 +32,11 @@ async def ask_question(request: Request, question: str = Form(...), model: str =
                 "response": response,
                 "question": question,
                 "model": model,
-                "df_preview": df_preview
+                #"df_preview": df_preview
             }
         )
     except Exception as e:
-        df_preview = obtener_datos().head(5).to_html(classes="df-preview", index=False)
+        #df_preview = obtener_datos().head(5).to_html(classes="df-preview", index=False)
         return templates.TemplateResponse(
             "index.html",
             {
@@ -44,6 +44,6 @@ async def ask_question(request: Request, question: str = Form(...), model: str =
                 "error": str(e),
                 "question": question,
                 "model": model,
-                "df_preview": df_preview
+                #"df_preview": df_preview
             }
         )
