@@ -7,3 +7,4 @@ pandas
 openai
 openpyxl
 python-dotenv
+tabulate
