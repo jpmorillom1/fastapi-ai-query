@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #003f8f 0%, #0051bf 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(203, 171, 66, 0.3);
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    color: #003f8f;
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.model-selector {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+    border: 1px solid rgba(203, 171, 66, 0.2);
+}
+
+.model-selector h3 {
+    color: #003f8f;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+}
+
+.model-option {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.model-option:hover {
+    background: #f5f8ff;
+    transform: translateY(-1px);
+}
+
+.model-option.selected {
+    background: linear-gradient(135deg, #003f8f, #005cc5);
+    color: white;
+    border-color: #cbab42;
+}
+
+.model-option input[type="radio"] {
+    margin-right: 12px;
+    accent-color: #003f8f;
+}
+
+.model-info {
+    flex: 1;
+}
+
+.model-name {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.model-desc {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* Data Preview Card */
+.data-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 16px;
+    border: 1px solid rgba(203, 171, 66, 0.2);
+}
+
+.data-card h4 {
+    color: #003f8f;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.data-card h4::before {
+    content: "📊";
+    margin-right: 8px;
+    color: #cbab42;
+}
+
+.data-preview-container {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+.data-preview-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-preview-container th,
+.data-preview-container td {
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.data-preview-container th {
+    background: #f8fafc;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+}
+
+/* Form Card */
+.form-card {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    margin-bottom: 24px;
+    border: 1px solid rgba(203, 171, 66, 0.2);
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    color: #003f8f;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+textarea {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #003f8f;
+    box-shadow: 0 0 0 3px rgba(0, 63, 143, 0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #003f8f, #005cc5);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 63, 143, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 63, 143, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Response Cards */
+.response-card, .error-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(203, 171, 66, 0.2);
+}
+
+.error-card {
+    border-left: 4px solid #e53e3e;
+    background: linear-gradient(135deg, #fed7d7, #feb2b2);
+}
+
+.response-card h3, .error-card h3 {
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+}
+
+.response-card h3 {
+    color: #003f8f;
+}
+
+.error-card h3 {
+    color: #c53030;
+}
+
+.response-text {
+    line-height: 1.6;
+    color: #003f8f;
+}
+
+.error-text {
+    color: #c53030;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

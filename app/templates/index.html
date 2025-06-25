@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta Gemini</title>
+    <link href="/static/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>MODELOS LLM</h2>
+            
+            <div class="model-selector">
+                <h3>Selecciona un modelo</h3>
+                <div class="model-option selected" data-model="gemini">
+                    <input type="radio" name="model_display" value="gemini" checked>
+                    <div class="model-info">
+                        <div class="model-name">Gemini Pro</div>
+                        <div class="model-desc">Modelo avanzado de Google</div>
+                    </div>
+                </div>
+                
+                <div class="model-option" data-model="deepseek">
+                    <input type="radio" name="model_display" value="deepseek">
+                    <div class="model-info">
+                        <div class="model-name">DeepSeek</div>
+                        <div class="model-desc">Modelo especializado en código</div>
+                    </div>
+                </div>
+                
+                <div class="model-option" data-model="llama3">
+                    <input type="radio" name="model_display" value="llama3">
+                    <div class="model-info">
+                        <div class="model-name">Llama3-Nemotron</div>
+                        <div class="model-desc">Modelo open source potente</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Preview Card -->
+            {% if df_preview %}
+            <div class="data-card">
+                <h4>Vista previa de datos</h4>
+                <div class="data-preview-container">
+                    {{ df_preview | safe }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="content-wrapper">
+
+                <div class="header">
+                    <img src="https://www.dspace.uce.edu.ec/assets/custom/images/logo3.png" alt="Escudo UCE" style="height: 100px;">
+                    <h1>UNIVERSIDAD CENTRAL DEL ECUADOR</h1>
+                    <p>FAST-API CON LLMS APIKEYs</p>
+                </div>
+
+                <form method="post" action="/ask" id="queryForm">
+                    <div class="form-card">
+                        <div class="form-group">
+                            <label for="question">💭 Tu pregunta:</label>
+                            <textarea id="question" name="question" required rows="6" 
+                                placeholder="Escribe tu pregunta aquí...">{{ question or '' }}</textarea>
+                        </div>
+
+                        <!-- Hidden input for selected model -->
+                        <input type="hidden" id="selectedModel" name="model" value="{{ model or 'gemini' }}">
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span id="btnText">Enviar pregunta</span>
+                        </button>
+                    </div>
+                </form>
+
+                {% if error %}
+                <div class="error-card">
+                    <h3>⚠️ Error</h3>
+                    <div class="error-text">{{ error }}</div>
+                </div>
+                {% endif %}
+
+                {% if response %}
+                <div class="response-card">
+                    <h3>✨ Respuesta</h3>
+                    <div class="response-text">{{ response }}</div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
