@@ -16,8 +16,8 @@ templates = Jinja2Templates(directory="app/templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
-    df_preview = obtener_datos().head(5).to_html(classes="df-preview", index=False)
-    return templates.TemplateResponse("index.html", {"request": request, "df_preview": df_preview})
+    #df_preview = obtener_datos().head(5).to_html(classes="df-preview", index=False)
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.post("/ask", response_class=HTMLResponse)
